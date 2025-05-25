@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport " content="width=device-width, inital-scale=1.0"
+
+  <title>Методические рекомендации по массажу</title>
+  <link> 
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdf7f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      margin-top: 60px;
+      padding: 20px 40px;
+      color: #4e342e;
+      text-align: center;
+      font-size: 2.5em;
+      background: linear-gradient(90deg, #f3e5ab, #ffe5b4, #f3e5ab);
+      background-size: 300% 100%;
+      animation: gradientMove 10s linear infinite;
+      border-radius: 16px;
+      animation: fadeInDown 1.2s ease forwards;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .nav-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin: 40px auto;
+      max-width: 900px;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .nav-buttons a {
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: #fff8e1;
+      border-radius: 12px;
+      color: #4e342e;
+      font-size: 18px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .nav-buttons a:hover {
+      background-color: #ffde9e;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    }
+
+    .nav-buttons a:nth-child(1) { animation-delay: 0.2s; }
+    .nav-buttons a:nth-child(2) { animation-delay: 0.4s; }
+    .nav-buttons a:nth-child(3) { animation-delay: 0.6s; }
+    .nav-buttons a:nth-child(4) { animation-delay: 0.8s; }
+    .nav-buttons a:nth-child(5) { animation-delay: 1s; }
+    .nav-buttons a:nth-child(6) { animation-delay: 1.2s; }
+
+    .content {
+      max-width: 1000px;
+      padding: 30px 20px;
+      text-align: justify;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #3e2723;
+      animation: fadeIn 1.5s ease forwards;
+      background-color: #ffffffcc;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      margin-bottom: 40px;
+    }
+
+    .tab {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .tab.active {
+      display: block;
+      animation: fadeIn 1s ease;
+    }
+
+    img {
+      max-width: 100%;
+      margin: 20px 0;
+      border-radius: 10px;
+      opacity: 0;
+      transform: scale(0.95);
+      animation: fadeZoom 0.8s ease forwards;
+      animation-delay: 0.3s;
+      animation-fill-mode: forwards;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      color: #7c6f64;
+      font-size: 14px;
+      text-align: center;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeZoom {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+	#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  background: linear-gradient(145deg, #6d4c41, #8d6e63);
+  color: white;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+  z-index: 1000;
+  text-align: center;
+  line-height: 50px;
+  animation: bounce 2.5s infinite;
+}
+
+#back-to-top:hover {
+  background: linear-gradient(145deg, #8d6e63, #a1887f);
+  transform: scale(1.1);
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+#back-to-top:hover {
+  background: #6d4c41;
+}
+
+  </style>
+  <script>
+    function showTab(tabId) {
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => {
+        tab.style.opacity = 0;
+        setTimeout(() => tab.classList.remove('active'), 300);
+      });
+      setTimeout(() => {
+        const tab = document.getElementById(tabId);
+        tab.classList.add('active');
+        tab.style.opacity = 1;
+      }, 300);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('.nav-buttons a');
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const tabId = link.getAttribute('href').substring(1);
+          showTab(tabId);
+        });
+      });
+      showTab('intro');
+    });
+  </script>
+</head>
+<body>
+
+  <h1>Методические рекомендации по массажу</h1>
+
+  <div class="nav-buttons">
+    <a href="#intro">Введение</a>
+    <a href="#joints">Массаж суставов</a>
+    <a href="#neck">Шейный отдел</a>
+    <a href="#lowback">Поясничный отдел</a>
+    <a href="#trauma">Ушибы и растяжения</a>
+    <a href="#scoliosis">Сколиоз</a>
+  </div>
+
+  <div class="content">
+    <section id="intro" class="tab">
+      <h2>Введение</h2>
+    <h4>  <p>Заболевания опорно-двигательного аппарата представляют собой одну из наиболее распространенных проблем здравоохранения во всем мире. Они затрагивают людей всех возрастов и приводят к снижению качества жизни, ограничению трудоспособности и инвалидизации. Лечебный массаж имеет ряд преимуществ перед медикаментозной терапией, особенно в лечении заболеваний опорно-двигательного аппарата, нервной системы и других хронических заболеваний. Он является безопасным, эффективным и приятным методом лечения, который может применяться как самостоятельно, так и в сочетании с другими методами терапии. Его многогранное воздействие на организм человека делает его ценным инструментом в руках медицинских специалистов различных областей. В настоящее время нет такого медицинского учреждения — где бы ни применялся этот эффективный лечебный метод.</p></h4>
+    </section>
+
+    <section id="joints" class="tab">
+      <h2>Методика массажа при заболевании суставов</h2>
+      <p>Причина: артрит и артрозы различной этиологии, дегенеративные заболевания (остеопороз); Положение пациента: массаж нижних конечностей - лежа, массаж верхних конечностей - сидя. <p>Длительность курса: 12 процедур, через день по 10-15 минут.</P></p>
+      <ol>
+        <li>Воздействие на паравертебральные зоны, соответствующие спинномозговым сегментам, связанным с суставом.</li>
+        <li>Массаж мышц и сухожилий, расположенных как проксимальнее, так и дистальнее больного сустава; начинают воздействие с проксимальных отделов.</li>
+        <li>Массаж здоровых симметричных суставов, при необходимости проводится отсасывающий массаж для уменьшения выпотов и отеков.</li>
+        <li>Массаж самого больного сустава и его сумочно-связочного аппарата, включая поглаживание и растирание. Массируется вся поверхность сустава и прилегающие области, затем переходят к связкам. Особенно тщательно прорабатываются места прикрепления сухожилий, сухожильные влагалища и суставные сумки.</li>
+        <li>Проведение пассивных и активных движений в больном суставе.</li>
+      </ol>
+      <img src="photo_2025-05-23_22-09-53.jpg" alt="Массаж сустава">
+      <img src="photo_2025-05-23_22-05-00.jpg" alt="Пассивные и активные движения">
+    </section>
+
+    <section id="neck" class="tab">
+      <h2>Методика массажа при шейном остеохондрозе</h2>
+      <p>причина: дегенеративный процесс в межпозвонковых дисках в следствие постоянной повышенной нагрузки на позвоночник; Положение пациента: лежа на животе, лежа на спине, сидя (голова на валике).</p>
+      <P>Длительность: 12 процедур ежедневно по 15-20 минут.</P>
+      <ol>
+        <li>Массаж волосистой части головы с разминанием от затылочного бугра в направлении к темени.</li>
+        <li>Массаж височной и лобной области.</li>
+        <li> Массаж паравертебральных областей снизу вверх до сегмента С4, выполняется плоскостным и обхватывающим разминанием в медленном темпе.</li>
+        <li>Массаж верхней конечности, межлопаточных областей, межреберных промежутков, а также грудино-ключично-сосцевидных и больших грудных мышц.</li>
+        <li>Сотрясение грудной клетки.</li>
+        <li>Избирательный массаж в зонах триггерных точек, расположенных в паравертебральной области и межостистых промежутках шеи, межлопаточной области, периартикулярно плечевых суставов и над трапециевидными мышцами.</li>
+        <li>Массаж мышц живота по общепринятой методике, включающий поглаживание и разминание.</li>
+        <li>Выполнение дыхательных упражнений и упражнений для укрепления мышц шеи, плечевого пояса и верхних конечностей.</li>
+      </ol>
+
+        <img src="photo_2025-05-23_22-10-07.jpg" alt="Паравертебральные зоны поясницы">
+        <img src="photo_2025-05-23_22-10-04.jpg" alt="Паравертебральные зоны поясницы">
+    </section>
+
+    <section id="lowback" class="tab">
+      <h2>Методика массажа при поясничном остеохондрозе</h2>
+      <p>причина: дегенеративный процесс в межпозвонковых дисках в следствие постоянной повышенной нагрузки на позвоночник; Положение пациента: лежа на животе.</p>
+      <P>Длительность курса: 12 процедур ежедневно или через день по 15-20 минут.</p>
+      <ol>
+        <li>Массаж паравертебральных зон соответствующих сегментов (крестец, нижний грудной отдел), с использованием приемов поглаживания, растирания и разминания.</li>
+        <li>Массаж ягодичных мышц, области крестца и гребней подвздошных костей, применяя поглаживание, растирание, вибрацию; основной массажный прием здесь — разминание.</li>
+        <li>Сотрясение таза.</li>
+        <li>Массаж триггерных точек, используя такие приемы, как глубокое растирание, вибрация и пунктирование.</li>
+        <li>Выполнение активных и пассивных движений в суставах нижних конечностей.</li>
+      </ol>
+      <img src="photo_2025-05-23_22-10-14.jpg" alt="Поясничный отдел">
+      <img src="photo_2025-05-23_22-10-20.jpg" alt="Поясничный отдел">
+      <img src="photo_2025-05-23_22-10-18.jpg" alt="Сотрясение таза">
+
+    </section>
+
+    <section id="trauma" class="tab">
+      <h2>Методика массажа при ушибах и растяжениях капсульно-связочного аппарата</h2>
+      <p>Причина: травмы и вывихи суставов; Положение пациента: лежа или сидя.</p>
+      <p>Длительность курса: 15-20 минут ежедневно, 12-15 процедур. ! Массаж показан со 2–3-го дня после травмы.</p>
+      <p>Последовательность и особенности массажа: ! В первые 2–3 дня выполняется дренажный массаж выше места повреждения, при этом поврежденный сустав должен быть зафиксирован. ! Массаж проводится ежедневно в течение 5–10 минут по направлению венозного оттока. у спины, дельтоиды, а также грудино-ключичный и ключично-акромиальный суставы пораженной стороны.</p>
+      <ol>
+        <li>На поврежденных мышцах - разминание и вибрация.</li>
+        <li>На суставных структурах (сумки, влагалища, сухожилия, места крепления) - поглаживание и глубокое растирание.</li>
+        <li>Массаж симметричных неповрежденных сегментов, паравертебральных и рефлексогенных зон.</li>
+        <li>При травмах нижних конечностей - дополнительно поясничные симпатические узлы, ягодицы, таз.</li>
+        <li>При травмах верхних конечностей - дополнительно шейные симпатические узлы, мышцы шеи, груди, плеча, суставы плечевого пояса.</li>
+        <li>Массаж паравертебральных зон - снизу вверх.</li>
+        <li>Комбинировать с физическими упражнениями.</li>
+      </ol>
+      <img src="photo_2025-05-23_22-10-23.jpg" alt="Ушиб и растяжение">\
+        <img src="photo_2025-05-23_18-54-23.jpg" alt="Массаж сустава">
+    </section>
+
+    <section id="scoliosis" class="tab">
+      <h2>Методика массажа при сколиозе 2-3 степени</h2>
+      <p>Причина: сутулость, неправильная осанка, нарушение обмена веществ, ассиметрия частей тела; Положение пациента: лежа на животе, лежа на боку (на противоположной стороне грудного искривления) и лежа на спине.</p>
+      <p>Длительность курса: 12-15 процедур, 15-20 минут ежедневно.</p>
+      <p>Последовательность и особенности массажа: ! Показан дифференцированный массаж мышц спины и живота с более интенсивным тонизирующим воздействием на вогнутой стороне искривления и седативным - на выпуклой. А Вид сзади.</p>
+      <ul>
+        <ol>
+          <li>расслабление и растягивание верхней порции трапециевидной мышцы.</li>
+        <li>укрепление длинных мышц в области грудного сколиоза, реберного выступа и снижение его высоты ритмическим надавливанием на ребра.</li>
+        <li>расслабление и растягивание запавших мышц в области поясничной вогнутости.</li>
+        <li>оттягивание крыла подвздошной кости.</li>
+        <li>укрепление мышечного валика, снижение его высоты и формирование талии.</li>
+        <li>расслабление и растягивание межреберных мышц и связок в области грудной вогнутости.</li>
+        <li>оттягивание угла лопатки.</li>
+        <li>укрепление мышц над лопаткой и верхней порции трапециевидной мышцы Б Вид спереди.</li>
+      </ol>
+      </ul>
+      <ul>
+        <ol>
+        <li>укрепление мышц плечевого пояса и грудных мышц.</li>
+        <li>укрепление мышц в области переднего реберного горба и выравнивание его надавливанием по направлению кзади.</li>
+        <li>укрепление мышц брюшного пресса.</li>
+        <li>выравнивание реберных дуг, захватывая их от позвоночника и направляя кпереди.</li>
+        <li>расслабление грудных мышц и оттягивание плеча назад к плоскости.</li>
+      </ol>
+      </ul>
+      <img src="photo_2025-05-23_22-10-11.jpg" alt="Массаж при сколиозе">
+
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 Методические материалы. Все права защищены.
+  </footer>
+  <a href="#" id="back-to-top" title="Наверх">&#8679;</a>
+
+</body>
+<script>
+  const backToTopButton = document.createElement('a');
+  backToTopButton.id = 'back-to-top';
+  backToTopButton.href = '#';
+  backToTopButton.innerHTML = '↑';
+  document.body.appendChild(backToTopButton);
+
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('back-to-top');
+    if (window.scrollY > 300) {
+      btn.style.display = 'block';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+
+  document.getElementById('back-to-top').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+</html>
